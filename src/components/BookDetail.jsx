@@ -1,7 +1,13 @@
 import { Col, Row, Button } from 'react-bootstrap'
 import { FaShoppingCart } from 'react-icons/fa'
+import { useDispatch } from 'react-redux'
 
 const BookDetail = ({ bookSelected }) => {
+  // useDispatch mi permetterà di effettuare il "dispatch" di una o più
+  // actions in questo componente
+
+  const dispatch = useDispatch()
+
   return (
     <div className="mt-3 mb-4 mb-lg-0">
       {bookSelected ? (
@@ -30,7 +36,18 @@ const BookDetail = ({ bookSelected }) => {
                 <span className="fw-bold">Price:</span>&nbsp;
                 {bookSelected.price}$
               </p>
-              <Button className="d-flex align-items-center" onClick={() => {}}>
+              <Button
+                className="d-flex align-items-center"
+                onClick={() => {
+                  // qui dentro voglio andare a "MODIFICARE" lo stato
+                  // -> e ovviamente intendo crearne uno nuovo!
+                  // dobbiamo svegliare il reducer -> DISPATCH di una action!
+                  dispatch({
+                    type: 'ADD_TO_CART',
+                    payload: bookSelected, // il libro da aggiungere!
+                  })
+                }}
+              >
                 <span className="me-2">AGGIUNGI AL</span>
                 <FaShoppingCart />
               </Button>

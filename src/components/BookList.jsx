@@ -5,7 +5,7 @@ const BookList = ({ books, changeBook, bookSelected }) => (
     {books.map((book) => (
       <Book
         key={book.id}
-        book={book}
+        book={book} // OGGETTO DEL LIBRO!
         changeBook={changeBook}
         bookSelected={bookSelected}
       />

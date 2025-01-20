@@ -4,8 +4,9 @@ import BookList from './BookList'
 import BookDetail from './BookDetail'
 
 const BookStore = () => {
-  const [books, setBooks] = useState([])
+  const [books, setBooks] = useState([]) // memorizzare i LIBRI dalle API
   const [bookSelected, setBookSelected] = useState(null)
+  // serve a memorizzare su quale libro nella colonna a SX si è cliccato
 
   useEffect(() => {
     getBooks()
@@ -17,7 +18,7 @@ const BookStore = () => {
         'https://striveschool-api.herokuapp.com/food-books'
       )
       if (resp.ok) {
-        let fetchedBooks = await resp.json()
+        let fetchedBooks = await resp.json() // array di 6 libri
         setBooks(fetchedBooks)
       } else {
         console.log('error')
